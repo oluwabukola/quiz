@@ -65,8 +65,7 @@ function quiz() {
     
      const output = [];
     //For each question
-    questions.forEach(
-                      (currentQuestion, questionNumber) => {
+    questions.forEach((currentQuestion, questionNumber) => {
        const  answer= [];
         //for each aveilable answer
         for (letter in currentQuestion.answer) {
@@ -85,7 +84,10 @@ function quiz() {
              <div class="style1"></div>
             <div class="questionbox"> ${currentQuestion.question} </div>
             <div class="answerbox"> ${answer.join('')} </div>
+            
             </div>
+            
+            <button id="submit" onclick="submitAnswer('${questionNumber}')" >Submit</button>
             </div>`
             
           );
@@ -104,10 +106,10 @@ function showResult() {
       console.log(picked)
        if (picked.ans === currentQuestion.correctAnswer) {
            correct++;
-           const selector = `#btn-${questionNumber}-${picked.ans}`;
-           const correctDiv = document.querySelector(selector);
-           console.log(correctDiv)
-           correctDiv.style.backgroundColor = "#3e8e41";
+           //const selector = `#btn-${questionNumber}-${picked.ans}`;
+           //const correctDiv = document.querySelector(selector);
+           //console.log(correctDiv)
+           //correctDiv.style.backgroundColor = "#3e8e41";
        }
     // if answer is wrong or blank
     else{
@@ -145,6 +147,7 @@ function pickAnswer(questionNumber, letter) {
 }
 
 function showSlide(n) {
+    document.getElementById('next').style.display = 'none';
     console.log(n, currentSlide)
     //console.log(slides)
     const nextButton = document.querySelector(".button");
@@ -156,10 +159,6 @@ function showSlide(n) {
     if(currentSlide === slides.length-1){
         nextButton.style.display = "none";
         
-    }
-    else {
-        nextButton.style.display = 'inline-block';
-    
     }
 }
 function showNextSlide() {
@@ -173,6 +172,39 @@ function nextSubmit() {
         
     }
       
+  }
+
+  function submitAnswer(questionNumber) {
+    console.log(questionNumber);
+      //pick the answer selected
+      const answer = answersSelected.find(a => a.question === questionNumber);
+      const question = questions[questionNumber];
+      console.log(question, answer);
+    if (answer && question){
+        if (answer.ans === question.correctAnswer){
+            //color the answer box green
+            const selector = `#btn-${questionNumber}-${answer.ans}`;
+            const correctDiv = document.querySelector(selector);
+            console.log(correctDiv)
+            correctDiv.style.backgroundColor = "#3e8e41";
+        } else {
+            //color the picked answer red and the correct answer green
+            const selector = `#btn-${questionNumber}-${answer.ans}`;
+            const correctDiv = document.querySelector(selector);
+            correctDiv.style.backgroundColor = "red";
+            const incorrectDiv = document.querySelector(`#btn-${questionNumber}-${question.correctAnswer}`);
+            incorrectDiv.style.backgroundColor = '#3e8e41';
+        }
+        //show the next button
+        const next = document.getElementById('next')
+        next.style.display = 'block';
+        //remove submit button
+        const submit = document.getElementById('submit')
+        submit.style.display = 'none'
+    }else {
+        document.getElementById('submit').style.display = 'none';
+        document.getElementById('next').style.display = 'block';
+    }
   }
   
 quiz();
