@@ -8,14 +8,14 @@ body{
     box-sizing: border-box;
     
 }
-/* h1{
+h1{
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     margin-top: 20%;
     margin-bottom: 15px;
 }
-#start{
+.start{
     width:130px;
     height:50px;
     background-color:rgb(85, 81, 81);
@@ -23,17 +23,17 @@ body{
     padding: 5px; 
     border-radius: 25px;
     cursor: pointer;
-
+    
 }
 #start p{
 font-size:22px;
 font-weight: 100px;
 text-align: center;
 margin-top: 10px;
-} */
+}
 
 /* Question and answer section */
- .container {
+ .container{
     background-color: grey;
     width:37vw;
     height: 95vh;
@@ -45,10 +45,11 @@ margin-top: 10px;
     
 }
 
-.container p {
+ .numquest {
     text-align: center;
     margin-top:5%;
     margin-bottom: 1%;
+    font-size: 20px;
 }
 .style1{
    width:50%;
@@ -63,7 +64,7 @@ margin-top: 10px;
     height: 10vh;
     margin: 5% auto 2% auto;
     padding:10px;
-    background-color: honeydew;
+    background-color: black;
 }
 .answerbox{
     box-sizing: border-box;
@@ -78,7 +79,7 @@ margin-top: 10px;
     justify-content: center;
 
 }
-#btn {
+.btnanswer {
     box-sizing: border-box;
     width:15vw;
     height:8vh;
@@ -90,11 +91,12 @@ margin-top: 10px;
     justify-content: center;
     cursor: pointer; 
 }
-.submit{
-    width:30%;
+#submit{
+     width:30%; 
     height: 10%;
     background-color:rgb(66, 61, 61);
-    margin:20px auto 5px auto;
+     margin:20px auto 5px auto; 
+    margin: 20px 10%;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -150,9 +152,21 @@ margin-top: 10px;
     from{ transform: translateX(0px)}
     to{ transform: translateX(10px)}
 }
+.slide{
+     z-index:1;
+    opacity : 0; 
+    transition: opacity  0.5s ;
+}
 
 
-/* .congrat{
+  .active-slide{
+    opacity: 1;
+    z-index: 2; 
+  }
+   
+
+
+ /* #congrat{
     box-sizing: border-box;
     width: 30vw;
     height:70vh;
@@ -160,8 +174,8 @@ margin-top: 10px;
     margin: 5% auto 2% auto;
     border-radius: 20px;
     padding:10px;
-}
-img{
+} */
+/*img{
     width:10vw;
     height:20vh;
     background-color: grey;

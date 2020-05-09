@@ -7,28 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- <h1>Welcome!</h1>
-<div id="start">
-<p>Start quiz</p>
-</div> 
-<div id="quiz"></div>
-<button id="submit">Submit Quiz</button>
-<div id="results"></div> -->
 
+<h1>Welcome!</h1>
+<button class="start" onclick="quiz()">Start quiz</button>
 
-<div class="container">
-    <p class="numquest">Question <span class="currentarr"> 1 </span> of <span class="arrlnt"> 5 </span></p>
-    <div class="style1"></div> 
-</div>
-
-        <!-- <div class="questionbox"></div>
-    <div class="answerbox">  -->
-          <!-- <div class="btn"></div>
-        <div class="btn"></div>
-        <div class="btn"></div>
-        <div class="btn"></div> -->
+<div id="quiz">
     
-    <!-- <div class="submit"><h3>Submit</h3></div> -->
+</div>
+<button id="submit" onclick="showResult()" ><h3>Submit</h3></button>
+<button class="button"  onclick = "showNextSlide()">Next <i class="arrow"></i></button>
+    
+     
    <!--<div class="progress">
         <div class="record"></div>
         <div class="record"></div>
@@ -37,14 +26,11 @@
         <div class="record"></div>
     </div> -->
     
-    <button class="button">Next <i class="arrow"></i></button>
-    <div class="red"></div>
-    <div class="green"></div>
 </div>
     
-     <!-- <div class= "congrat">
-         <img src="brand.jpeg" alt="">
-     </div>-->
+     <div id= "congrat">
+         
+     </div>
 
 <script src="script.js"></script> 
 </body>
