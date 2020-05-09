@@ -54,9 +54,6 @@ let questions = [
         correctAnswer: "A"
     }
 ];
-
-
-
 let slides = []
 let currentSlide = 0;
 const quizContainer = document.querySelector('#quiz');
@@ -80,19 +77,14 @@ function quiz() {
                 </div>`
             );
         }
-
         //adding thw question and answer in an output
          output.push(
              `<div class="slide">
              <div  class="container">
-             <p class="numquest">Question ${questionNumber + 1} of ${questions.length} </p>
+             <p class="numquest">Question ${questionNumber + 1} of  ${questions.length} </p>
              <div class="style1"></div>
             <div class="questionbox"> ${currentQuestion.question} </div>
             <div class="answerbox"> ${answer.join('')} </div>
-           
-            
-    
-         
             </div>
             </div>`
             
@@ -102,16 +94,12 @@ function quiz() {
     quizContainer.innerHTML= output.join('');
     slides = document.querySelectorAll(".slide");
 }
-
 function showResult() {
     console.log('Showing results...')
     const answerContainers = quizContainer.querySelectorAll(".answerbox");
     let correct = 0;
      // for each question...
   questions.forEach( (currentQuestion, questionNumber) => {
-
-
-
       const picked = answersSelected.find(a => a.question === questionNumber);
       console.log(picked)
        if (picked.ans === currentQuestion.correctAnswer) {
@@ -119,7 +107,7 @@ function showResult() {
            const selector = `#btn-${questionNumber}-${picked.ans}`;
            const correctDiv = document.querySelector(selector);
            console.log(correctDiv)
-           correctDiv.style.backgroundColor = "green";
+           correctDiv.style.backgroundColor = "#3e8e41";
        }
     // if answer is wrong or blank
     else{
@@ -128,7 +116,7 @@ function showResult() {
       const correctDiv = document.querySelector(selector);
       correctDiv.style.backgroundColor = "red";
            const incorrectDiv = document.querySelector(`#btn-${questionNumber}-${currentQuestion.correctAnswer}`);
-           incorrectDiv.style.backgroundColor = 'green';
+           incorrectDiv.style.backgroundColor = '#3e8e41';
            
     }
   });
@@ -187,7 +175,7 @@ function nextSubmit() {
       
   }
   
-//quiz();
+quiz();
 //showResult();
 showSlide(currentSlide);
 console.log(slides);
