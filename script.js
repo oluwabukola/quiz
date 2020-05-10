@@ -84,10 +84,9 @@ function quiz() {
              <div class="style1"></div>
             <div class="questionbox"> ${currentQuestion.question} </div>
             <div class="answerbox"> ${answer.join('')} </div>
-            
+             <button class="submit sub"  id="submit-${questionNumber}"  onclick="submitAnswer('${questionNumber}', '${currentQuestion.correctAnswer}')" >Submit</button>
+           
             </div>
-            
-            <button id="submit" class="sub" onclick="submitAnswer('${questionNumber}')" >Submit</button>
             </div>`
             
           );
@@ -127,11 +126,11 @@ function showResult() {
     console.log(correct);
   resultsContainer.innerHTML = `${correct} out of ${questions.length}`;
 }
-
+// let button = document.querySelectorAll("#btn");
 let answersSelected = []
 
 function pickAnswer(questionNumber, letter) {
-        
+        console.log(questionNumber, letter)
     if (answersSelected.some(item => item.question === questionNumber)){
         let questionPicked = answersSelected.find(item => item.question === questionNumber);
         questionPicked.ans = letter
@@ -172,12 +171,14 @@ function nextSubmit() {
         
     }
       
-  }
+}
 
-  function submitAnswer(questionNumber) {
+function submitAnswer(questionNumber, correct) {
+
     console.log(questionNumber);
       //pick the answer selected
-      const answer = answersSelected.find(a => a.question === questionNumber);
+    console.log(answersSelected)
+      const answer = answersSelected.find(a => a.question == questionNumber);
       const question = questions[questionNumber];
       console.log(question, answer);
     if (answer && question){
@@ -199,13 +200,13 @@ function nextSubmit() {
         const next = document.getElementById('next')
         next.style.display = 'block';
         //remove submit button
-        const submit = document.getElementById('submit')
+        const submit = document.getElementById(`submit-${questionNumber}`)
         submit.style.display = 'none'
     }else {
-        document.getElementById('submit').style.display = 'none';
-        document.getElementById('next').style.display = 'block';
+        //document.getElementById(`submit-${questionNumber}`).style.display = 'none';
+        //document.getElementById('next').style.display = 'block';
     }
-  }
+}
   
 quiz();
 //showResult();
