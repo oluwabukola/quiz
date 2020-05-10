@@ -73,12 +73,12 @@ body{
     cursor: pointer; 
     border-radius: 15px;
 }
-#submit{
+.sub{
      width:13%; 
     height: 8%;
     padding: 10px;
     background-color:rgb(66, 61, 61);
-     margin:20px auto 5px auto; 
+     /* margin:20px auto 5px auto;  */
      border-radius: 15px; 
     color:white;
     font-size: 20px;
@@ -132,40 +132,71 @@ body{
     opacity: 1;
     z-index: 2; 
   }
-   
 
+  .button:hover{
+    background-color:grey;
+  }
+
+  .sub:hover{
+    background-color:grey;
+  }
 
  /* #congrat{
     box-sizing: border-box;
     width: 30vw;
     height:70vh;
-    background-color: grey;
+    background-color:rgb(66, 61, 61);
     margin: 5% auto 2% auto;
     border-radius: 20px;
     padding:10px;
 } */
 
-
-@media (min-width:320px) {
-    
-}
-
-@media (min-width: 400px) {
-}
-@media (min-width:560px) {
-    
-} 
-@media (max-width: 950px) {
-    
-    .btnanswer{
-        width:100%;
+@media (max-width: 860px) {
+    .sub{
+        width:25%; 
+        height:10% ;
+        font-size: 20px;
+        right:38%;
+        bottom:10%;
+        margin-top:20px;
+    }
+    .container{
+        width:40vw;
+    }
+    .btnanswer {
+        box-sizing: border-box;
+        width:25vw;
         height:8vh;
-    }
-    #sumit{
-        bottom:30%;
-    
-    }
 }
-        
-
- 
+.questionbox{
+    box-sizing: border-box;
+    width:80%;
+    height: 10vh;
+    margin: 8% auto 2% auto;
+    padding:10px;
+    background-color: rgb(66, 61, 61);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.questionbox{
+    
+    width:90%;
+    height: 12vh;
+    margin: 8% auto 2% auto;
+    padding:10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.button{
+    width:12%;
+    height:10%;
+    
+    right: 16%;
+    bottom:3%;
+}
+    
+}

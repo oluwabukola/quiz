@@ -87,7 +87,7 @@ function quiz() {
             
             </div>
             
-            <button id="submit" onclick="submitAnswer('${questionNumber}')" >Submit</button>
+            <button id="submit" class="sub" onclick="submitAnswer('${questionNumber}')" >Submit</button>
             </div>`
             
           );
@@ -127,7 +127,7 @@ function showResult() {
     console.log(correct);
   resultsContainer.innerHTML = `${correct} out of ${questions.length}`;
 }
-// let button = document.querySelectorAll("#btn");
+
 let answersSelected = []
 
 function pickAnswer(questionNumber, letter) {
