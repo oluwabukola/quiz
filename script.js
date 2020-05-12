@@ -60,6 +60,7 @@ const quizContainer = document.querySelector('#quiz');
 const submitButon = document.querySelector(".submit");
 const resultsContainer = document.querySelector("#congrat");
 const nextButton = document.querySelector(".button");
+let correct = 0;
 
 function quiz() {
     
@@ -84,9 +85,10 @@ function quiz() {
              <div class="style1"></div>
             <div class="questionbox"> ${currentQuestion.question} </div>
             <div class="answerbox"> ${answer.join('')} </div>
-             <button class="submit sub"  id="submit-${questionNumber}"  onclick="submitAnswer('${questionNumber}', '${currentQuestion.correctAnswer}')" >Submit</button>
-           
-            </div>
+             <button class="submit sub" id="submit-${questionNumber}"  onclick="submitAnswer('${questionNumber}', '${currentQuestion.correctAnswer}')">Submit</button>
+            
+             </div>
+        
             </div>`
             
           );
@@ -96,41 +98,34 @@ function quiz() {
     slides = document.querySelectorAll(".slide");
 }
 function showResult() {
-    console.log('Showing results...')
+    //console.log('Showing results...')
     const answerContainers = quizContainer.querySelectorAll(".answerbox");
-    let correct = 0;
+     correct = 0;
      // for each question...
   questions.forEach( (currentQuestion, questionNumber) => {
       const picked = answersSelected.find(a => a.question === questionNumber);
       console.log(picked)
        if (picked.ans === currentQuestion.correctAnswer) {
            correct++;
-           //const selector = `#btn-${questionNumber}-${picked.ans}`;
-           //const correctDiv = document.querySelector(selector);
-           //console.log(correctDiv)
-           //correctDiv.style.backgroundColor = "#3e8e41";
-       }
-    // if answer is wrong or blank
-    else{
-      // color the answers red
-      const selector = `#btn-${questionNumber}-${picked.ans}`;
-      const correctDiv = document.querySelector(selector);
-      correctDiv.style.backgroundColor = "red";
-           const incorrectDiv = document.querySelector(`#btn-${questionNumber}-${currentQuestion.correctAnswer}`);
-           incorrectDiv.style.backgroundColor = '#3e8e41';
-           
-    }
+        
+          // picked.ans 
+             }
   });
 
   // show number of correct answers out of total
     console.log(correct);
-  resultsContainer.innerHTML = `${correct} out of ${questions.length}`;
+    quizContainer.remove();
+    resultsContainer.innerHTML = `<h2 class="res">congratulations!!!<h2>
+    <p class="res">You provided ${correct} correct  answers out of ${questions.length} questions. </p>
+    <p class= "res"> You scored ${correct} points.</p>`;
+    resultsContainer.style.display = "block";
+ 
 }
-// let button = document.querySelectorAll("#btn");
-let answersSelected = []
+
+let answersSelected = [];
 
 function pickAnswer(questionNumber, letter) {
-        console.log(questionNumber, letter)
+    console.log(questionNumber, letter);
     if (answersSelected.some(item => item.question === questionNumber)){
         let questionPicked = answersSelected.find(item => item.question === questionNumber);
         questionPicked.ans = letter
@@ -148,15 +143,19 @@ function pickAnswer(questionNumber, letter) {
 function showSlide(n) {
     document.getElementById('next').style.display = 'none';
     console.log(n, currentSlide)
-    //console.log(slides)
-    const nextButton = document.querySelector(".button");
+    console.log(n);
+     const nextButton = document.querySelector(".button");
     if (n !== 0)
         slides[currentSlide].remove();
+        
     slides[n].classList.add('active-slide');
-    currentSlide = n;
+    currentSlide =n;
     console.log(nextButton)
-    if(currentSlide === slides.length-1){
-        nextButton.style.display = "none";
+    if (currentSlide === slides.length - 1) {
+       
+        nextButton.style.display = 'none';  
+       
+       //nextButton.addEventListener('click', showResult());
         
     }
 }
@@ -167,8 +166,7 @@ function nextSubmit() {
     const selector = `#btn-${questionNumber}-${picked.ans}`;
            const correctDiv = document.querySelector(selector);
     if (correctDiv) {
-        nextButton.style.diplay = "none";
-        
+        nextButton.style.diplay = "none";  
     }
       
 }
@@ -188,6 +186,7 @@ function submitAnswer(questionNumber, correct) {
             const correctDiv = document.querySelector(selector);
             console.log(correctDiv)
             correctDiv.style.backgroundColor = "#3e8e41";
+            correct++;
         } else {
             //color the picked answer red and the correct answer green
             const selector = `#btn-${questionNumber}-${answer.ans}`;
@@ -197,14 +196,18 @@ function submitAnswer(questionNumber, correct) {
             incorrectDiv.style.backgroundColor = '#3e8e41';
         }
         //show the next button
-        const next = document.getElementById('next')
+        if (currentSlide !== slides.length - 1) {
+            const next = document.getElementById('next');
         next.style.display = 'block';
         //remove submit button
-        const submit = document.getElementById(`submit-${questionNumber}`)
-        submit.style.display = 'none'
-    }else {
-        //document.getElementById(`submit-${questionNumber}`).style.display = 'none';
-        //document.getElementById('next').style.display = 'block';
+        const submit = document.getElementById(`submit-${questionNumber}`);
+            submit.style.display = 'none';
+        }
+        if (currentSlide === slides.length - 1) {
+            
+            document.getElementById('finish').style.display = "block";
+            
+        }
     }
 }
   
