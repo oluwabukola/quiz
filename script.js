@@ -119,6 +119,7 @@ function showResult() {
     <p class="res">You provided ${correct} correct  answers out of ${questions.length} questions. </p>
     <p class= "res"> You scored ${correct} points.</p>`;
     resultsContainer.style.display = "block";
+    
  
 }
 
@@ -208,8 +209,15 @@ function submitAnswer(questionNumber, correct) {
             document.getElementById('finish').style.display = "block";
             
         }
+        
     }
 }
+
+function reset() {
+    window.location.reload();
+    
+    }
+
   
 quiz();
 //showResult();
